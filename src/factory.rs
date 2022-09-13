@@ -121,13 +121,13 @@ impl PersonalInformation {
         for i in 0..logo.len() {
             let repline = logo[i].replace(".", " ");
             match i {
-                1 => println!("| {repline} | Developer with the Rust Programming Language          |"),
-                4 => println!("| {repline} {}{}", info[0], create_separator(info[0].len())),
-                9 => println!("| {repline} {}{}", info[1], create_separator(info[1].len())),
-                14 => println!("| {repline} {}{}", info[2], create_separator(info[2].len())),
-                19 => println!("| {repline} {}{}", info[3], create_separator(info[3].len())),
-                24 => println!("| {repline} {}{}", info[4], create_separator(info[4].len())),
-                _ => println!("| {repline} |{}", create_separator(0))
+                1 => println!("| {} | Developer with the Rust Programming Language          |", repline),
+                4 => println!("| {} {}{}", repline, info[0], create_separator(info[0].len())),
+                9 => println!("| {} {}{}", repline, info[1], create_separator(info[1].len())),
+                14 => println!("| {} {}{}", repline, info[2], create_separator(info[2].len())),
+                19 => println!("| {} {}{}", repline, info[3], create_separator(info[3].len())),
+                24 => println!("| {} {}{}", repline, info[4], create_separator(info[4].len())),
+                _ => println!("| {} |{}", repline, create_separator(0))
             }
         }
         print_a_line(logo[0].len() + 60);
