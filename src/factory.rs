@@ -66,7 +66,7 @@ impl PersonalInformation {
             let mut s = String::new();
             match item {
                 0 => {for _ in 0..65 {s.push(' ')}s.push('|')},
-                _ => {for _ in 0..66-item {s.push(' ')}s.push('|')}
+                _ => {for _ in 0..75-item {s.push(' ')}s.push('|')}
             }
             return s;
         }
@@ -106,17 +106,18 @@ impl PersonalInformation {
             "...............MD.ZNN.NN................"
         ];
         let info = [
-            format!("|   Name: {} {}", &self.firstname, &self.lastname),
-            format!("|   Email: {}", &self.email),
-            format!("|   GitHub Account: https://github.com/{}", &self.github_name),
-            format!("|   City: {}", &self.city),
-            format!("|   Country: {}", &self.country)
+            format!("|   \u{001b}[1mName:\u{001b}[22m {} {}", &self.firstname, &self.lastname),
+            format!("|   \u{001b}[1mEmail:\u{001b}[22m {}", &self.email),
+            format!("|   \u{001b}[1mGitHub:\u{001b}[22m https://github.com/{}", &self.github_name),
+            format!("|   \u{001b}[1mCity:\u{001b}[22m {}", &self.city),
+            format!("|   \u{001b}[1mCountry:\u{001b}[22m {}", &self.country)
         ];
         let mut longest_info = 0;
         for item in &info {
             if item.len() < longest_info {longest_info = item.len()}
         }
-        let top_text = "|   Certified Rust Developer";
+        let top_text = "|   \u{001b}[1mCertified Rust Developer\u{001b}[22m";
+        println!("\u{001b}[2J");
         print_a_line(logo[0].len() + 70);
         for i in 0..logo.len() {
             let repline = logo[i].replace(".", " ");
