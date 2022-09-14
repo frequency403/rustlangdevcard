@@ -25,8 +25,8 @@ fn print_all_object_values(obj: &PersonalInformation) {
     City: {}\n\n",
              obj.get_info("f"),
              obj.get_info("l"),
+             obj.get_info("e"),
              obj.get_info("g"),
-             obj.get_info("z"),
              obj.get_info("co"),
              obj.get_info("ci"));
 
@@ -40,7 +40,7 @@ fn change_object_property(info: &mut PersonalInformation) -> bool {
     } else if field_value.as_str().contains("last") | field_value.as_str().contains("Last") {
         info.change_info("lastname", get_user_input("New entry for Lastname"));
         true
-    } else if field_value.as_str().contains("github") | field_value.as_str().contains("githubuser") {
+    } else if field_value.as_str().contains("git") | field_value.as_str().contains("github") {
         info.change_info("github", get_user_input("New entry for Github Username"));
         true
     } else if field_value.as_str().contains("mail") | field_value.as_str().contains("email") {
@@ -66,15 +66,15 @@ fn init_object() -> PersonalInformation {
         get_user_input("Enter your City")
     )
 }
-fn loopit(info: &mut PersonalInformation) {
+fn the_real_main(info: &mut PersonalInformation) {
     print_all_object_values(&info);
     if question_for_change() {
         if change_object_property(info) {
-            println!("Success!"); loopit(info);
+            println!("Success!"); the_real_main(info);
         } else { println!("Something failed"); }
     } else { info.gen_card() }
 }
 fn main() {
     let mut info = init_object();
-    loopit(&mut info);
+    the_real_main(&mut info);
 }

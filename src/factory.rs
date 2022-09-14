@@ -2,18 +2,18 @@
 pub struct PersonalInformation {
     firstname: String,
     lastname: String,
-    githubname: String,
+    github_name: String,
     email: String,
     country: String,
     city: String,
 }
 
 impl PersonalInformation {
-    pub fn initialize(firstname: String, lastname: String, githubname: String, email: String, country: String, city: String) -> Self{
+    pub fn initialize(firstname: String, lastname: String, github_name: String, email: String, country: String, city: String) -> Self{
         PersonalInformation {
             firstname,
             lastname,
-            githubname,
+            github_name,
             email,
             country,
             city,
@@ -23,7 +23,7 @@ impl PersonalInformation {
         let thaip = match taip {
             "f" => &self.firstname,
             "l" => &self.lastname,
-            "g" => &self.githubname,
+            "g" => &self.github_name,
             "e" => &self.email,
             "co" => &self.country,
             "ci" => &self.city,
@@ -42,7 +42,7 @@ impl PersonalInformation {
                 true
             },
             "githubname" => {
-                self.githubname = value;
+                self.github_name = value;
                 true
             },
             "email" => {
@@ -65,8 +65,8 @@ impl PersonalInformation {
         fn create_separator(item: usize) -> String {
             let mut s = String::new();
             match item {
-                0 => {for _ in 0..55 {s.push(' ')}s.push('|')},
-                _ => {for _ in 0..56-item {s.push(' ')}s.push('|')}
+                0 => {for _ in 0..65 {s.push(' ')}s.push('|')},
+                _ => {for _ in 0..66-item {s.push(' ')}s.push('|')}
             }
             return s;
         }
@@ -76,7 +76,7 @@ impl PersonalInformation {
             for _ in 0..length {
                 s.push('-')
             }
-            println!("{s}")
+            println!("{}",s)
         }
         let logo = [
             "...............N8.7DD.OO................",
@@ -108,7 +108,7 @@ impl PersonalInformation {
         let info = [
             format!("|   Name: {} {}", &self.firstname, &self.lastname),
             format!("|   Email: {}", &self.email),
-            format!("|   GitHub Account: https://github.com/{}", &self.githubname),
+            format!("|   GitHub Account: https://github.com/{}", &self.github_name),
             format!("|   City: {}", &self.city),
             format!("|   Country: {}", &self.country)
         ];
@@ -116,12 +116,12 @@ impl PersonalInformation {
         for item in &info {
             if item.len() < longest_info {longest_info = item.len()}
         }
-
-        print_a_line(logo[0].len() + 60);
+        let top_text = "|   Certified Rust Developer";
+        print_a_line(logo[0].len() + 70);
         for i in 0..logo.len() {
             let repline = logo[i].replace(".", " ");
             match i {
-                1 => println!("| {} | Developer with the Rust Programming Language          |", repline),
+                1 => println!("| {} {}{}", repline, top_text, create_separator(top_text.len())),
                 4 => println!("| {} {}{}", repline, info[0], create_separator(info[0].len())),
                 9 => println!("| {} {}{}", repline, info[1], create_separator(info[1].len())),
                 14 => println!("| {} {}{}", repline, info[2], create_separator(info[2].len())),
@@ -130,7 +130,7 @@ impl PersonalInformation {
                 _ => println!("| {} |{}", repline, create_separator(0))
             }
         }
-        print_a_line(logo[0].len() + 60);
+        print_a_line(logo[0].len() + 70);
     }
 
 }
