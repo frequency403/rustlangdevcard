@@ -72,7 +72,7 @@ fn the_real_main(info: &mut PersonalInformation) {
         if change_object_property(info) {
             println!("Success!"); the_real_main(info);
         } else { println!("Something failed"); }
-    } else { info.gen_card() }
+    } else { info.gen_card(get_user_input("Your top text e.g. \"Certified Rust Developer\"").as_str()) }
 }
 fn main() {
     let mut info = init_object();

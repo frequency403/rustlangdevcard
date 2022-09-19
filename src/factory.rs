@@ -61,7 +61,7 @@ impl PersonalInformation {
         }
     }
 
-    pub fn gen_card(&self) {
+    pub fn gen_card(&self, card_top_text: &str) {
         fn create_separator(item: usize) -> String {
             let mut s = String::new();
             match item {
@@ -116,7 +116,7 @@ impl PersonalInformation {
         for item in &info {
             if item.len() < longest_info {longest_info = item.len()}
         }
-        let top_text = "|   \u{001b}[1mCertified Rust Developer\u{001b}[22m";
+        let top_text = "|   \u{001b}[1m" + card_top_text +"\u{001b}[22m";
         println!("\u{001b}[2J");
         print_a_line(logo[0].len() + 70);
         for i in 0..logo.len() {
