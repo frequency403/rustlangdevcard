@@ -116,7 +116,7 @@ impl PersonalInformation {
         for item in &info {
             if item.len() < longest_info {longest_info = item.len()}
         }
-        let top_text = "|   \u{001b}[1m" + card_top_text +"\u{001b}[22m";
+        let top_text = ["|   \u{001b}[1m" , card_top_text ,"\u{001b}[22m"].concat();
         println!("\u{001b}[2J");
         print_a_line(logo[0].len() + 70);
         for i in 0..logo.len() {
