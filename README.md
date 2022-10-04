@@ -6,7 +6,7 @@ A simple terminal-candy ID-Card generator in pure rust
 ### Build from Source by Cargo
 
 ```bash
-cargo build
+cargo build --release
 ```
 
 ## Usage
